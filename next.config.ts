@@ -1,7 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // postgres.js array parsers break when Turbopack bundles the driver.
+  serverExternalPackages: ["postgres", "sharp"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
   experimental: {
     agentFeedback: true,
   },

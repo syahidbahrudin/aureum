@@ -1,0 +1,3 @@
+CREATE UNIQUE INDEX "entity_mention_name" ON "entity_mentions" ("source_revision_id",lower("suggested_name")) WHERE "suggested_name" is not null;--> statement-breakpoint
+CREATE UNIQUE INDEX "entity_active_name" ON "entity" (lower("name"),"category") WHERE "deleted_at" is null and "merged_into_id" is null;--> statement-breakpoint
+CREATE UNIQUE INDEX "topic_active_name" ON "topic" (lower("name")) WHERE "deleted_at" is null and "merged_into_id" is null and "archived_at" is null;
